@@ -3,14 +3,14 @@ pragma solidity ^0.8.28;
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
-import { ERC20 } from "./ERC20.sol";
+import { IERC20 } from "./ERC20.sol";
 
 contract Savings {
-    ERC20 public erc20;
+    IERC20 public erc20;
     mapping(address => uint256) public unlockDate;
 
     constructor (address _erc20) {
-        erc20 = ERC20(_erc20);
+        erc20 = IERC20(_erc20);
     }
 
     function deposit(uint256 amount) external {

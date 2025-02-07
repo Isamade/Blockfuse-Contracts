@@ -4,7 +4,18 @@ pragma solidity ^0.8.28;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract ERC20 {
+interface IERC20 {
+    function transfer(address to, uint256 value) external;
+    function approve(address spender, uint256 value) external;
+    function transferFrom(address from, address to, uint256 value) external;
+    function increaseAllowance(address spender, uint256 addedValue) external;
+    function decreaseAllowance(address spender, uint256 subtractedValue) external;
+    function burn(uint256 value) external;
+    function transferOwnership(address newOwner) external;
+    
+}
+
+contract ERC20 is IERC20 {
     mapping(address account => uint256) public balances;
 
     mapping(address account => mapping(address spender => uint256)) public allowances;
